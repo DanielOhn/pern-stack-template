@@ -42,7 +42,7 @@ app.put('/posts/:post_id', async (req, res) => {
 
         const updatePost = await pool.query('UPDATE posts SET text = $1 WHERE post_id = $2', [updateText, post_id]);
 
-        res.json("Post was updated")
+        res.json("Post was updated");
     } catch (err) {
         console.log(err.message);
     }
