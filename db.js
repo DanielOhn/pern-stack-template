@@ -9,12 +9,14 @@ const devConfig = {
     database: process.env.PG_DATABASE,
 };
 
-const proConfig = process.env.DATABASE_URL; // heroku addons
-
-const pool = new Pool({
-    connectionString: process.env.NODE_ENV === "production",
+const proConfig = {
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
+}; // heroku addons
+
+const pool = new Pool(
+    process.env.NODE_ENV === "production"
         ? proConfig : devConfig
-});
+);
 
 module.exports = pool;
