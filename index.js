@@ -26,7 +26,7 @@ app.post('/posts', async (req, res) => {
     //await
     try {
         const { text } = req.body;
-        const newPost = await pool.query('INSERT INTO posts (text) VALUES($1) RETURNING *', [text]);
+        const newPost = await pool.query('INSERT INTO posts (text) VALUES ($1) RETURNING *', [text]);
 
         res.json(newPost.rows[0]);
     } catch (err) {
